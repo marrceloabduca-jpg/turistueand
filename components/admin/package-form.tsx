@@ -651,9 +651,9 @@ export function PackageForm({ initialData }: PackageFormProps) {
                 <div className="flex flex-wrap gap-2">
                   {formData.tags
                     .filter((tag) => !PREDEFINED_TAGS.includes(tag))
-                    .map((tag, index) => (
+                    .map((tag) => (
                       <span
-                        key={index}
+                        key={tag}
                         className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
                       >
                         {tag}
