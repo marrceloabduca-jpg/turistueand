@@ -61,7 +61,7 @@ export function ImageDropzone({ value, onChange }: ImageDropzoneProps) {
       }
 
       if (file.size > MAX_IMAGE_SIZE) {
-        setError("El archivo es demasiado grande. Máximo 5MB.")
+        setError("El archivo es demasiado grande. Máximo 15MB.")
         return
       }
 
@@ -177,7 +177,7 @@ export function ImageDropzone({ value, onChange }: ImageDropzoneProps) {
                 : "Arrastrá una imagen o hacé clic"}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              JPG, PNG, WebP o GIF (máx. 5MB)
+              JPG, PNG, WebP o GIF (máx. 15MB)
             </p>
           </>
         )}
