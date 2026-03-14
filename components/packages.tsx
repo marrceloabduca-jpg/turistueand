@@ -293,6 +293,7 @@ export function Packages({ packages, categories }: PackagesProps) {
               <button
                 key={tag}
                 onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+                aria-pressed={selectedTag === tag}
                 className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
                   selectedTag === tag
                     ? "bg-primary text-primary-foreground border-primary shadow-md"
