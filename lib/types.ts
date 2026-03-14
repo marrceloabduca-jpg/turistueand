@@ -71,6 +71,16 @@ export const FALLBACK_CATEGORIES: { value: PackageCategory; label: string }[] = 
   { value: 'relax', label: 'Relax' },
 ]
 
+/** Valid database columns for the packages table, used to sanitize API payloads */
+export const PACKAGE_DB_COLUMNS = [
+  "name", "slug", "description", "short_description",
+  "destination", "category", "duration", "group_size",
+  "price", "original_price", "admin_fee",
+  "image_url", "gallery",
+  "includes", "highlights", "itinerary",
+  "is_featured", "is_active", "departure_dates",
+] as const
+
 export const FALLBACK_DESTINATIONS = [
   'Bariloche',
   'Iguazú',

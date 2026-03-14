@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { NextResponse } from "next/server"
+import { PACKAGE_DB_COLUMNS } from "@/lib/types"
 
 async function handleUpdate(
   request: Request,
@@ -18,18 +19,9 @@ async function handleUpdate(
   const body = await request.json()
 
   // Only include valid database columns to prevent unknown fields
-  // (e.g. admin_fee if not yet added) from rejecting the entire update
-  const VALID_COLUMNS = [
-    "name", "slug", "description", "short_description",
-    "destination", "category", "duration", "group_size",
-    "price", "original_price", "admin_fee",
-    "image_url", "gallery",
-    "includes", "highlights", "itinerary",
-    "is_featured", "is_active", "departure_dates",
-  ]
-
+  // from rejecting the entire update
   const updateData: Record<string, unknown> = {}
-  for (const key of VALID_COLUMNS) {
+  for (const key of PACKAGE_DB_COLUMNS) {
     if (key in body) {
       updateData[key] = body[key]
     }
