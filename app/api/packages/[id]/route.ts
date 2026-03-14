@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { NextResponse } from "next/server"
+import { PACKAGE_DB_COLUMNS } from "@/lib/types"
 
 async function handleUpdate(
   request: Request,
@@ -17,9 +18,18 @@ async function handleUpdate(
 
   const body = await request.json()
 
+  // Only include valid database columns to prevent unknown fields
+  // from rejecting the entire update
+  const updateData: Record<string, unknown> = {}
+  for (const key of PACKAGE_DB_COLUMNS) {
+    if (key in body) {
+      updateData[key] = body[key]
+    }
+  }
+
   const { error } = await supabase
     .from("packages")
-    .update(body)
+    .update(updateData)
     .eq("id", id)
 
   if (error) {

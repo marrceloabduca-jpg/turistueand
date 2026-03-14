@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS public.packages (
   group_size TEXT,
   price DECIMAL(10, 2),
   original_price DECIMAL(10, 2),
+  admin_fee DECIMAL(10, 2),
   image_url TEXT,
   gallery TEXT[] DEFAULT '{}',
   includes TEXT[] DEFAULT '{}',

@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { NextResponse } from "next/server"
+import { PACKAGE_DB_COLUMNS } from "@/lib/types"
 
 export async function POST(request: Request) {
   try {
@@ -14,9 +15,18 @@ export async function POST(request: Request) {
 
     const body = await request.json()
 
+    // Only include valid database columns to prevent unknown fields
+    // from rejecting the entire insert
+    const insertData: Record<string, unknown> = {}
+    for (const key of PACKAGE_DB_COLUMNS) {
+      if (key in body) {
+        insertData[key] = body[key]
+      }
+    }
+
     const { error } = await supabase
       .from("packages")
-      .insert(body)
+      .insert(insertData)
 
     if (error) {
       console.error("Error creating package:", error)
