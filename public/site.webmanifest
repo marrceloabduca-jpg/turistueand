@@ -1,0 +1,21 @@
+{
+  "name": "Turismeando - Viajes y Turismo",
+  "short_name": "Turismeando",
+  "description": "Agencia de viajes y turismo en Argentina",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f5f0",
+  "theme_color": "#C07830",
+  "icons": [
+    {
+      "src": "/icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
