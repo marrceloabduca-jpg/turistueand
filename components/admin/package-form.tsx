@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import type { Package } from "@/lib/types"
-import { FALLBACK_CATEGORIES } from "@/lib/types"
+import { FALLBACK_CATEGORIES, PREDEFINED_TAGS } from "@/lib/types"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -46,6 +46,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
     includes: initialData?.includes || [],
     highlights: initialData?.highlights || [],
     departure_dates: initialData?.departure_dates || [],
+    tags: initialData?.tags || [],
     is_featured: initialData?.is_featured || false,
     is_active: initialData?.is_active ?? true,
   })
@@ -53,6 +54,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
   const [newInclude, setNewInclude] = useState("")
   const [newHighlight, setNewHighlight] = useState("")
   const [newDate, setNewDate] = useState("")
+  const [newTag, setNewTag] = useState("")
 
   const generateSlug = (name: string) => {
     return name
@@ -72,7 +74,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
   }
 
   const addItem = (
-    field: "includes" | "highlights" | "departure_dates",
+    field: "includes" | "highlights" | "departure_dates" | "tags",
     value: string,
     setValue: (v: string) => void
   ) => {
@@ -86,7 +88,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
   }
 
   const removeItem = (
-    field: "includes" | "highlights" | "departure_dates",
+    field: "includes" | "highlights" | "departure_dates" | "tags",
     index: number
   ) => {
     setFormData((prev) => ({
@@ -119,6 +121,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
         includes: formData.includes,
         highlights: formData.highlights,
         departure_dates: formData.departure_dates,
+        tags: formData.tags,
         is_featured: formData.is_featured,
         is_active: formData.is_active,
       }
@@ -588,6 +591,86 @@ export function PackageForm({ initialData }: PackageFormProps) {
                       </button>
                     </div>
                   ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Etiquetas</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {PREDEFINED_TAGS.map((tag) => {
+                    const isSelected = formData.tags.includes(tag)
+                    return (
+                      <button
+                        key={tag}
+                        type="button"
+                        onClick={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            tags: isSelected
+                              ? prev.tags.filter((t) => t !== tag)
+                              : [...prev.tags, tag],
+                          }))
+                        }
+                        className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                          isSelected
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted text-muted-foreground hover:bg-muted/80"
+                        }`}
+                      >
+                        {tag}
+                      </button>
+                    )
+                  })}
+                </div>
+                <div className="flex gap-2">
+                  <Input
+                    value={newTag}
+                    onChange={(e) => setNewTag(e.target.value)}
+                    placeholder="Etiqueta personalizada..."
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault()
+                        addItem("tags", newTag, setNewTag)
+                      }
+                    }}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => addItem("tags", newTag, setNewTag)}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {formData.tags
+                    .filter((tag) => !PREDEFINED_TAGS.includes(tag))
+                    .map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                      >
+                        {tag}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              tags: prev.tags.filter((t) => t !== tag),
+                            }))
+                          }
+                          className="hover:text-red-500"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </span>
+                    ))}
                 </div>
               </div>
             </CardContent>

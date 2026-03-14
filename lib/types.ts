@@ -19,6 +19,7 @@ export interface Package {
   is_featured: boolean
   is_active: boolean
   departure_dates: string[]
+  tags: string[]
   created_at: string
   updated_at: string
 }
@@ -78,7 +79,7 @@ export const PACKAGE_DB_COLUMNS = [
   "price", "original_price", "admin_fee",
   "image_url", "gallery",
   "includes", "highlights", "itinerary",
-  "is_featured", "is_active", "departure_dates",
+  "is_featured", "is_active", "departure_dates", "tags",
 ] as const
 
 export const FALLBACK_DESTINATIONS = [
@@ -92,4 +93,10 @@ export const FALLBACK_DESTINATIONS = [
   'El Calafate',
   'Puerto Madryn',
   'Tucumán',
+]
+
+export const PREDEFINED_TAGS = [
+  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
+  'Vacaciones de Invierno', 'Vacaciones de Verano', 'Semana Santa', 'Fin de Semana Largo',
 ]

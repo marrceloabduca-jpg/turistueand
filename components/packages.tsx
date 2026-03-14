@@ -156,6 +156,20 @@ function PackageCard({ pkg }: { pkg: Package }) {
             </div>
           </div>
         )}
+
+        {/* Tags */}
+        {pkg.tags && pkg.tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {pkg.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </CardContent>
 
       <CardFooter className="p-6 pt-0">
