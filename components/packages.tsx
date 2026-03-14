@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
@@ -16,9 +17,11 @@ import {
   Shield,
   MessageCircle,
   Check,
-  UserCheck
+  UserCheck,
+  CalendarDays
 } from "lucide-react"
 import type { Package, Category } from "@/lib/types"
+import { PREDEFINED_TAGS } from "@/lib/types"
 
 interface PackagesProps {
   packages: Package[]
@@ -188,11 +191,23 @@ function PackageCard({ pkg }: { pkg: Package }) {
 }
 
 export function Packages({ packages, categories }: PackagesProps) {
+  const [selectedTag, setSelectedTag] = useState<string | null>(null)
+
   // Build categories list with "todos" as first option
   const allCategories = [
     { value: "todos", label: "Todos" },
     ...categories.map(cat => ({ value: cat.slug, label: cat.name }))
   ]
+
+  // Only show tags that are actually used by at least one package
+  const availableTags = PREDEFINED_TAGS.filter(tag =>
+    packages.some(pkg => pkg.tags?.includes(tag))
+  )
+
+  // Filter packages by selected tag
+  const filteredPackages = selectedTag
+    ? packages.filter(pkg => pkg.tags?.includes(selectedTag))
+    : packages
 
   // If no packages from DB, show empty state
   if (packages.length === 0) {
@@ -271,6 +286,26 @@ export function Packages({ packages, categories }: PackagesProps) {
           ))}
         </div>
 
+        {/* Month/Tag Filter Pills */}
+        {availableTags.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {availableTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                  selectedTag === tag
+                    ? "bg-primary text-primary-foreground border-primary shadow-md"
+                    : "bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:border-primary/40"
+                }`}
+              >
+                <CalendarDays className="h-3.5 w-3.5" />
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Tabs */}
         <Tabs defaultValue="todos" className="w-full">
           {allCategories.length > 1 && (
@@ -289,7 +324,7 @@ export function Packages({ packages, categories }: PackagesProps) {
 
           <TabsContent value="todos" className="mt-0">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {packages.map((pkg) => (
+              {filteredPackages.map((pkg) => (
                 <PackageCard key={pkg.id} pkg={pkg} />
               ))}
             </div>
@@ -298,7 +333,7 @@ export function Packages({ packages, categories }: PackagesProps) {
           {allCategories.slice(1).map((category) => (
             <TabsContent key={category.value} value={category.value} className="mt-0">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {packages
+                {filteredPackages
                   .filter((pkg) => pkg.category === category.value)
                   .map((pkg) => (
                     <PackageCard key={pkg.id} pkg={pkg} />
