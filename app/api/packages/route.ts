@@ -14,9 +14,27 @@ export async function POST(request: Request) {
 
     const body = await request.json()
 
+    // Only include valid database columns to prevent unknown fields
+    // from rejecting the entire insert
+    const VALID_COLUMNS = [
+      "name", "slug", "description", "short_description",
+      "destination", "category", "duration", "group_size",
+      "price", "original_price", "admin_fee",
+      "image_url", "gallery",
+      "includes", "highlights", "itinerary",
+      "is_featured", "is_active", "departure_dates",
+    ]
+
+    const insertData: Record<string, unknown> = {}
+    for (const key of VALID_COLUMNS) {
+      if (key in body) {
+        insertData[key] = body[key]
+      }
+    }
+
     const { error } = await supabase
       .from("packages")
-      .insert(body)
+      .insert(insertData)
 
     if (error) {
       console.error("Error creating package:", error)

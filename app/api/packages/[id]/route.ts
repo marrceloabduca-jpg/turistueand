@@ -17,9 +17,27 @@ async function handleUpdate(
 
   const body = await request.json()
 
+  // Only include valid database columns to prevent unknown fields
+  // (e.g. admin_fee if not yet added) from rejecting the entire update
+  const VALID_COLUMNS = [
+    "name", "slug", "description", "short_description",
+    "destination", "category", "duration", "group_size",
+    "price", "original_price", "admin_fee",
+    "image_url", "gallery",
+    "includes", "highlights", "itinerary",
+    "is_featured", "is_active", "departure_dates",
+  ]
+
+  const updateData: Record<string, unknown> = {}
+  for (const key of VALID_COLUMNS) {
+    if (key in body) {
+      updateData[key] = body[key]
+    }
+  }
+
   const { error } = await supabase
     .from("packages")
-    .update(body)
+    .update(updateData)
     .eq("id", id)
 
   if (error) {
