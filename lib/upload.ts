@@ -5,7 +5,7 @@ export const ALLOWED_IMAGE_TYPES = [
   "image/gif",
 ]
 
-export const MAX_IMAGE_SIZE = 5 * 1024 * 1024 // 5MB
+export const MAX_IMAGE_SIZE = 15 * 1024 * 1024 // 15MB
 
 export const MIME_TO_EXTENSION: Record<string, string> = {
   "image/jpeg": "jpg",

@@ -29,6 +29,7 @@ interface PackagesProps {
 }
 
 function PackageCard({ pkg }: { pkg: Package }) {
+  const [showAllIncludes, setShowAllIncludes] = useState(false)
   const whatsappMessage = encodeURIComponent(
     `Hola! Me interesa el paquete "${pkg.name}" a ${pkg.destination}. Quisiera más información sobre fechas y precios.`
   )
@@ -125,7 +126,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
           <div className="space-y-2">
             <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Incluye:</p>
             <div className="flex flex-wrap gap-2">
-              {pkg.includes.slice(0, 3).map((item, index) => (
+              {(showAllIncludes ? pkg.includes : pkg.includes.slice(0, 3)).map((item, index) => (
                 <span 
                   key={index}
                   className="inline-flex items-center gap-1 text-xs bg-muted px-2 py-1 rounded-full text-muted-foreground"
@@ -135,9 +136,12 @@ function PackageCard({ pkg }: { pkg: Package }) {
                 </span>
               ))}
               {pkg.includes.length > 3 && (
-                <span className="text-xs text-primary font-medium">
-                  +{pkg.includes.length - 3} más
-                </span>
+                <button
+                  onClick={() => setShowAllIncludes(!showAllIncludes)}
+                  className="text-xs text-primary font-medium hover:underline cursor-pointer"
+                >
+                  {showAllIncludes ? "Ver menos" : `+${pkg.includes.length - 3} más`}
+                </button>
               )}
             </div>
           </div>
