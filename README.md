@@ -6,7 +6,7 @@ This repository is linked to a [v0](https://v0.app) project. You can continue de
 [Continue working on v0 →](https://v0.app/chat/projects/prj_rDqVw1QpBcLh3U2SJSiTerBOBE)
 
 ## Getting St
-First, run the development server:
+First, run the development server
 
 ```bash
 npm run dev
