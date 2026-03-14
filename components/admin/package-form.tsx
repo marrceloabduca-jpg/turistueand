@@ -64,11 +64,11 @@ export function PackageForm({ initialData }: PackageFormProps) {
   }
 
   const handleNameChange = (name: string) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       name,
       slug: generateSlug(name),
-    })
+    }))
   }
 
   const addItem = (
@@ -77,10 +77,10 @@ export function PackageForm({ initialData }: PackageFormProps) {
     setValue: (v: string) => void
   ) => {
     if (value.trim()) {
-      setFormData({
-        ...formData,
-        [field]: [...formData[field], value.trim()],
-      })
+      setFormData((prev) => ({
+        ...prev,
+        [field]: [...prev[field], value.trim()],
+      }))
       setValue("")
     }
   }
@@ -89,10 +89,10 @@ export function PackageForm({ initialData }: PackageFormProps) {
     field: "includes" | "highlights" | "departure_dates",
     index: number
   ) => {
-    setFormData({
-      ...formData,
-      [field]: formData[field].filter((_, i) => i !== index),
-    })
+    setFormData((prev) => ({
+      ...prev,
+      [field]: prev[field].filter((_, i) => i !== index),
+    }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -224,7 +224,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     id="slug"
                     value={formData.slug}
                     onChange={(e) =>
-                      setFormData({ ...formData, slug: e.target.value })
+                      setFormData((prev) => ({ ...prev, slug: e.target.value }))
                     }
                     placeholder="bariloche-aventura"
                     required
@@ -241,10 +241,10 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     id="short_description"
                     value={formData.short_description}
                     onChange={(e) =>
-                      setFormData({
-                        ...formData,
+                      setFormData((prev) => ({
+                        ...prev,
                         short_description: e.target.value,
-                      })
+                      }))
                     }
                     placeholder="Una línea que describe el paquete"
                   />
@@ -257,7 +257,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     id="description"
                     value={formData.description}
                     onChange={(e) =>
-                      setFormData({ ...formData, description: e.target.value })
+                      setFormData((prev) => ({ ...prev, description: e.target.value }))
                     }
                     placeholder="Descripción detallada del paquete..."
                     rows={5}
@@ -281,7 +281,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                       id="destination"
                       value={formData.destination}
                       onChange={(e) =>
-                        setFormData({ ...formData, destination: e.target.value })
+                        setFormData((prev) => ({ ...prev, destination: e.target.value }))
                       }
                       placeholder="Ej: Bariloche, Iguazú, Cancún..."
                     />
@@ -291,7 +291,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     <Select
                       value={formData.category}
                       onValueChange={(value) =>
-                        setFormData({ ...formData, category: value })
+                        setFormData((prev) => ({ ...prev, category: value }))
                       }
                     >
                       <SelectTrigger>
@@ -314,7 +314,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                       id="duration"
                       value={formData.duration}
                       onChange={(e) =>
-                        setFormData({ ...formData, duration: e.target.value })
+                        setFormData((prev) => ({ ...prev, duration: e.target.value }))
                       }
                       placeholder="Ej: Full day | 5 días / 4 noches"
                       required
@@ -326,7 +326,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                       id="group_size"
                       value={formData.group_size}
                       onChange={(e) =>
-                        setFormData({ ...formData, group_size: e.target.value })
+                        setFormData((prev) => ({ ...prev, group_size: e.target.value }))
                       }
                       placeholder="Ej: Hasta 15 personas"
                     />
@@ -450,7 +450,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                 <Switch
                   checked={formData.is_active}
                   onCheckedChange={(checked) =>
-                    setFormData({ ...formData, is_active: checked })
+                    setFormData((prev) => ({ ...prev, is_active: checked }))
                   }
                 />
               </div>
@@ -464,7 +464,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                 <Switch
                   checked={formData.is_featured}
                   onCheckedChange={(checked) =>
-                    setFormData({ ...formData, is_featured: checked })
+                    setFormData((prev) => ({ ...prev, is_featured: checked }))
                   }
                 />
               </div>
@@ -484,7 +484,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     type="number"
                     value={formData.price}
                     onChange={(e) =>
-                      setFormData({ ...formData, price: e.target.value })
+                      setFormData((prev) => ({ ...prev, price: e.target.value }))
                     }
                     placeholder="189000"
                   />
@@ -498,10 +498,10 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     type="number"
                     value={formData.original_price}
                     onChange={(e) =>
-                      setFormData({
-                        ...formData,
+                      setFormData((prev) => ({
+                        ...prev,
                         original_price: e.target.value,
-                      })
+                      }))
                     }
                     placeholder="220000"
                   />
@@ -518,7 +518,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
                     type="number"
                     value={formData.admin_fee}
                     onChange={(e) =>
-                      setFormData({ ...formData, admin_fee: e.target.value })
+                      setFormData((prev) => ({ ...prev, admin_fee: e.target.value }))
                     }
                     placeholder="10000"
                   />
@@ -538,7 +538,7 @@ export function PackageForm({ initialData }: PackageFormProps) {
               <ImageDropzone
                 value={formData.image_url}
                 onChange={(url) =>
-                  setFormData({ ...formData, image_url: url })
+                  setFormData((prev) => ({ ...prev, image_url: url }))
                 }
               />
             </CardContent>
