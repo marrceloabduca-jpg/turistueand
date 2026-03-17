@@ -263,8 +263,16 @@ export function Packages({ packages }: PackagesProps) {
   // ── Groups view: cards per month / festivity ────────────────────────────────
   if (view === "groups") {
     return (
-      <section id="paquetes" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
+      <section id="paquetes" className="py-24 relative overflow-hidden">
+        <Image
+          src="/images/packages-bg.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-background/80" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center gap-4 mb-10">
             <Button
               variant="ghost"
@@ -335,8 +343,16 @@ export function Packages({ packages }: PackagesProps) {
 
   // ── Packages view: filtered cards for the selected group ────────────────────
   return (
-    <section id="paquetes" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="paquetes" className="py-24 relative overflow-hidden">
+      <Image
+        src="/images/packages-bg.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center gap-4 mb-10">
           <Button
             variant="ghost"
