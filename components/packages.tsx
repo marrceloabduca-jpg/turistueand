@@ -219,8 +219,9 @@ export function Packages({ packages }: PackagesProps) {
       : []),
   ]
 
-  // Use the first available package image as the entry card background
-  const entryImage = packages[0]?.image_url || "/images/bariloche.jpg"
+  // Use the first available package image as the entry card background,
+  // falling back to the dedicated packages banner image.
+  const entryImage = packages[0]?.image_url || "/images/packages-bg.jpg"
 
   // ── Entry view: single "Paquetes" card ──────────────────────────────────────
   if (view === "entry") {
