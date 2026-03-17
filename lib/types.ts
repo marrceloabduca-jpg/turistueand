@@ -83,16 +83,18 @@ export const PACKAGE_DB_COLUMNS = [
 ] as const
 
 export const FALLBACK_DESTINATIONS = [
-  'Bariloche',
-  'Iguazú',
-  'Mendoza',
+  'Cataratas del Iguazú',
   'Salta',
+  'Federación',
+  'Carlos Paz',
+  'Merlo',
+  'San Rafael',
+  'Full Day',
+  'Bariloche',
+  'Mendoza',
   'Ushuaia',
   'Buenos Aires',
   'Córdoba',
-  'El Calafate',
-  'Puerto Madryn',
-  'Tucumán',
 ]
 
 export const PREDEFINED_TAGS = [
