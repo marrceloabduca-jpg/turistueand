@@ -13,7 +13,7 @@ interface DestinationsProps {
 const FULL_DAY_COLLAGE_IMAGES = [
   { src: "/images/iguazu.jpg", alt: "Cataratas del Iguazú" },
   { src: "/images/salta.jpg", alt: "Salta" },
-  { src: "/images/carlospaz.svg", alt: "Carlos Paz" },
+  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1024&q=80", alt: "Carlos Paz" },
 ]
 
 // Fallback destinations for when DB is empty
@@ -44,7 +44,7 @@ const fallbackDestinations: Destination[] = [
     slug: "federacion",
     region: "Entre Ríos",
     description: "Termas y naturaleza en el litoral",
-    image_url: "/images/federacion.svg",
+    image_url: "https://images.unsplash.com/photo-1544551763-92ab472cad5d?w=1024&q=80",
     is_featured: false,
     created_at: new Date().toISOString(),
   },
@@ -54,7 +54,7 @@ const fallbackDestinations: Destination[] = [
     slug: "carlos-paz",
     region: "Córdoba",
     description: "El lago y las sierras cordobesas",
-    image_url: "/images/carlospaz.svg",
+    image_url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1024&q=80",
     is_featured: false,
     created_at: new Date().toISOString(),
   },
@@ -64,7 +64,7 @@ const fallbackDestinations: Destination[] = [
     slug: "merlo",
     region: "San Luis",
     description: "El microclima especial de las sierras",
-    image_url: "/images/merlo.svg",
+    image_url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1024&q=80",
     is_featured: false,
     created_at: new Date().toISOString(),
   },
@@ -74,7 +74,7 @@ const fallbackDestinations: Destination[] = [
     slug: "san-rafael",
     region: "Mendoza",
     description: "Viñedos y aventura al pie de los Andes",
-    image_url: "/images/sanrafael.svg",
+    image_url: "https://images.unsplash.com/photo-1543934638-bd2a1e5a7f78?w=1024&q=80",
     is_featured: false,
     created_at: new Date().toISOString(),
   },
