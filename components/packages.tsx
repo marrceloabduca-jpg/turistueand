@@ -248,7 +248,7 @@ export function Packages({ packages }: PackagesProps) {
                     Explorá nuestras opciones de viaje por Argentina
                   </p>
                   <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 text-sm font-semibold hover:bg-white/30 transition-colors">
-                    Ver opciones <ChevronRight className="h-4 w-4" />
+                    Ver paquetes <ChevronRight className="h-4 w-4" />
                   </span>
                 </div>
               </div>
