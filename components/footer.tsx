@@ -62,7 +62,7 @@ export function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://www.facebook.com/turismeandoxargentina"
+                href="https://www.facebook.com/turismeando"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
@@ -151,13 +151,13 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.facebook.com/turismeandoxargentina"
+                  href="https://www.facebook.com/turismeando"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors"
                 >
                   <Facebook className="h-5 w-5" />
-                  turismeandoxargentina
+                  turismeando
                 </a>
               </li>
               <li className="flex items-start gap-3 text-background/70">

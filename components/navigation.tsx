@@ -90,7 +90,7 @@ export function Navigation() {
               <Instagram className={`h-5 w-5 ${isScrolled ? "text-foreground" : "text-background"}`} />
             </a>
             <a
-              href="https://www.facebook.com/turismeandoxargentina"
+              href="https://www.facebook.com/turismeando"
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2 rounded-full transition-colors ${
