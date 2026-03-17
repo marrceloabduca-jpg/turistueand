@@ -9,12 +9,6 @@ interface DestinationsProps {
   destinations: Destination[]
 }
 
-// Images to use in the Full Day collage card
-const FULL_DAY_COLLAGE_IMAGES = [
-  { src: "/images/fullday.jpg", alt: "Paisaje de excursión Full Day" },
-  { src: "/images/sanrafael.svg", alt: "Ilustración de viñedos y Andes en San Rafael, Mendoza" },
-  { src: "/images/carlospaz.svg", alt: "Ilustración del lago y sierras de Carlos Paz, Córdoba" },
-]
 
 // Fallback destinations for when DB is empty
 const fallbackDestinations: Destination[] = [
@@ -253,21 +247,15 @@ export function Destinations({ destinations: dbDestinations }: DestinationsProps
             </div>
           </div>
 
-          {/* Full Day - Special collage card spanning full width */}
+          {/* Full Day - Special card spanning full width */}
           <div className="col-span-2 md:col-span-4 group relative rounded-3xl overflow-hidden h-[220px] md:h-[260px]">
-            {/* Three-photo collage */}
-            <div className="absolute inset-0 grid grid-cols-3 gap-1">
-              {FULL_DAY_COLLAGE_IMAGES.map((img) => (
-                <div key={img.src} className="relative overflow-hidden">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-              ))}
-            </div>
+            {/* Full background image */}
+            <Image
+              src="/images/fullday.jpg"
+              alt="Paisaje de excursión Full Day"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
             {/* Dark overlay for text legibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/30 to-foreground/10" />
             {/* Badge */}
