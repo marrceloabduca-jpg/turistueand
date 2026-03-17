@@ -94,7 +94,7 @@ export function Contact() {
             </a>
 
             <a
-              href="https://www.facebook.com/turismeandoxargentina"
+              href="https://www.facebook.com/turismeando"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-3 p-6 bg-muted/50 rounded-2xl hover:bg-muted transition-colors group"
@@ -104,7 +104,7 @@ export function Contact() {
               </div>
               <div className="text-center">
                 <p className="font-semibold text-foreground">Facebook</p>
-                <p className="text-muted-foreground text-sm">turismeandoxargentina</p>
+                <p className="text-muted-foreground text-sm">turismeando</p>
               </div>
             </a>
 

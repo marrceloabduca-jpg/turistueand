@@ -28,6 +28,16 @@ export function TopBar() {
               <Instagram className="h-3.5 w-3.5" />
               <span>@turismeandoxargentina</span>
             </a>
+            <span className="hidden sm:inline text-background/30">|</span>
+            <a
+              href="https://www.facebook.com/turismeando"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-primary transition-colors"
+            >
+              <Facebook className="h-3.5 w-3.5" />
+              <span>turismeando</span>
+            </a>
           </div>
 
           {/* Right side - Hours & Location */}
