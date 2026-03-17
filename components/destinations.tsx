@@ -251,7 +251,7 @@ export function Destinations({ destinations: dbDestinations }: DestinationsProps
           <div className="col-span-2 md:col-span-4 group relative rounded-3xl overflow-hidden h-[220px] md:h-[260px]">
             {/* Full background image */}
             <Image
-              src="/images/fullday.jpg"
+              src="/images/fulldy.jpg"
               alt="Paisaje de excursión Full Day"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
