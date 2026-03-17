@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a5c;stop-opacity:1"/>
+      <stop offset="40%" style="stop-color:#3a7bd5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#2e8b57;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <!-- Rolling hills -->
+  <ellipse cx="200" cy="350" rx="280" ry="130" fill="#2e8b57"/>
+  <ellipse cx="600" cy="370" rx="280" ry="120" fill="#228b22"/>
+  <ellipse cx="400" cy="380" rx="300" ry="100" fill="#3a9a5c"/>
+  <!-- Trees (sierra de los comechingones feel) -->
+  <polygon points="120,310 140,260 160,310" fill="#1a5c3a"/>
+  <polygon points="150,315 170,268 190,315" fill="#1f6e44"/>
+  <polygon points="330,295 350,245 370,295" fill="#1a5c3a"/>
+  <polygon points="360,300 380,252 400,300" fill="#1f6e44"/>
+  <polygon points="580,305 600,255 620,305" fill="#1a5c3a"/>
+  <polygon points="620,310 640,262 660,310" fill="#1f6e44"/>
+  <!-- Sun -->
+  <circle cx="650" cy="100" r="50" fill="#f39c12" opacity="0.8"/>
+  <circle cx="650" cy="100" r="40" fill="#f1c40f"/>
+  <!-- Fog/mist -->
+  <ellipse cx="400" cy="320" rx="400" ry="40" fill="white" opacity="0.15"/>
+</svg>
