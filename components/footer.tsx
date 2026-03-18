@@ -179,6 +179,17 @@ export function Footer() {
             <p className="text-background/50 text-sm flex items-center gap-1">
               Hecho con <Heart className="h-4 w-4 text-primary fill-primary" /> en Argentina
             </p>
+            <p className="text-background/50 text-sm">
+              Página web hecha por{" "}
+              <a
+                href="https://wa.me/543518720951"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Webora
+              </a>
+            </p>
           </div>
         </div>
       </div>
